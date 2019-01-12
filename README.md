@@ -1,8 +1,8 @@
-# [PYTORCH] Character-level Convolutional Networks for Text Classification
+# [TENSORFLOW] Character-level Convolutional Networks for Text Classification
 
 ## Introduction
 
-Here is my pytorch implementation of the model described in the paper **Character-level Convolutional Networks for Text Classification** [paper](https://arxiv.org/abs/1509.01626). 
+Here is my tensorflow implementation of the model described in the paper **Character-level Convolutional Networks for Text Classification** [paper](https://arxiv.org/abs/1509.01626). 
 
 ## Datasets:
 
@@ -23,8 +23,8 @@ Statistics of datasets I used for experiments. These datasets could be download 
 
 I almost keep default setting as described in the paper. For optimizer and learning rate, there are 2 settings I use:
 
-- **SGD** optimizer with initial learning rate of 0.01. The learning rate is halved every 3 epochs.
-- **Adam** optimizer with initial learning rate of 0.001.
+- **SGD** optimizer with different initial learning rate (0.01 in most cases). The learning rate is halved every 3 epochs.
+- **Adam** optimizer with different learning rate (0.001 in most case).
 
 Additionally, in the original model, one epoch is seen as a loop over batch_size x num_batch records (128x5000 or 128x10000 or 128x30000), so it means that there are records used more than once for 1 epoch. In my model, 1 epoch is a complete loop over the whole dataset, where each record is used exactly once.
 
@@ -48,7 +48,7 @@ I run experiments in 2 machines, one with NVIDIA TITAN X 12gb GPU and the other 
 Results for test set are presented as follows:  A(B):
 - **A** is accuracy reproduced here.
 - **B** is accuracy reported in the paper.
-I used SGD and Adam as optimizer, with different initial learning rate. You could find out specific configuration for each experiment in **output/datasetname_scale/logs.txt**, for example output/ag_news_small/logs.txt
+I used SGD and Adam as optimizer, with different initial learning rate. You could find out specific configuration for each experiment in **trained_models/logs.txt**.
 
 Maximally, each experiment would be run for 20 epochs. Early stopping was applied with patience is set to 3 as default.
 
