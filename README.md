@@ -29,7 +29,7 @@ I almost keep default setting as described in the paper. For optimizer and learn
 Additionally, in the original model, one epoch is seen as a loop over batch_size x num_batch records (128x5000 or 128x10000 or 128x30000), so it means that there are records used more than once for 1 epoch. In my model, 1 epoch is a complete loop over the whole dataset, where each record is used exactly once.
 
 ## Training
-After putting 2 file **train.csv** and **test.csv** into **data** folder, there are several option for training:
+After putting 2 files **train.csv** and **test.csv** from any dataset mentioned above into **data** folder, there are several option for training:
 If you want to train a model with common dataset and default parameters, you could run:
 - **python train.py -d dataset_name**: For example, python train.py -d dbpedia
 
