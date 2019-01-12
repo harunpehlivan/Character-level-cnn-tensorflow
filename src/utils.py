@@ -1,41 +1,43 @@
-# -*- coding: utf-8 -*-
-import sys
-import csv
+"""
+@author: Viet Nguyen <nhviet1009@gmail.com>
+"""
+from math import ceil
 
-reload(sys)
-sys.setdefaultencoding('utf8')
-csv.field_size_limit(sys.maxsize)
-import os
-import h5py
 import numpy as np
+import pandas as pd
+import tensorflow as tf
 from sklearn.utils import shuffle
 
 
-def load_dataset(path, mode):
-    texts, labels = [], []
-    with open(path + os.sep + mode + ".csv", "rb") as csv_file:
-        reader = csv.reader(csv_file, quotechar='"')
-        for idx, line in enumerate(reader):
-            text = "{} {}".format(line[1].lower(), line[2].lower())
-            label = int(line[0]) - 1
-            texts.append(text)
-            labels.append(label)
-    np.random.seed(42)
-    texts, labels = shuffle(texts, labels)
-    return texts, labels
+def get_num_classes(data_path):
+    return len(pd.read_csv(data_path, header=None, usecols=[0])[0].unique())
 
 
-def generator(filename, batch_size=128):
-    with h5py.File(filename, 'r', libver='latest') as file:
-        n_chunks = len(file.keys()) / 2
-        for i in range(n_chunks):
-            texts = file["text_{}".format(i)]
-            labels = file["label_{}".format(i)]
-            for j in range(0, len(texts), batch_size):
-                yield texts[j: min(j + batch_size, len(texts))], labels[j: min(j + batch_size, len(texts))]
+def create_dataset(data_path, alphabet="""abcdefghijklmnopqrstuvwxyz0123456789,;.!?:'\"/\\|_@#$%^&*~`+-=<>()[]{}""",
+                   max_length=1014, batch_size=128, is_training=True):
+    label_converter = lambda x: int(x) - 1
+    data = pd.read_csv(data_path, header=None, converters={0: label_converter})
+    num_iters = ceil(data.shape[0] / batch_size)
+    if is_training:
+        data = shuffle(data, random_state=42)
+    num_columns = data.shape[1]
+    for idx in range(2, num_columns):
+        data[1] += data[idx]
+    data = data.drop([idx for idx in range(2, num_columns)], axis=1).values
+    alphabet = list(alphabet)
+    identity_mat = np.identity(len(alphabet))
 
-def get_size(filename):
-    with h5py.File(filename, 'r', libver='latest') as file:
-        n_chunks = len(file.keys()) / 2
-        total_length = sum([len(file["label_{}".format(i)]) for i in range(n_chunks)])
-        return total_length
+    def generator():
+        for row in data:
+            label, text = row
+            text = np.array([identity_mat[alphabet.index(i)] for i in list(str(text)) if i in alphabet], dtype=np.float32)
+            if len(text) > max_length:
+                text = text[:max_length]
+            elif 0 < len(text) < max_length:
+                text = np.concatenate((text, np.zeros((max_length - len(text), len(alphabet)), dtype=np.float32)))
+            elif len(text) == 0:
+                text = np.zeros((max_length, len(alphabet)), dtype=np.float32)
+            yield text.T, label
+
+    return tf.data.Dataset.from_generator(generator, (tf.float32, tf.int32),
+                                          ((len(alphabet), max_length), (None))).batch(batch_size), num_iters
