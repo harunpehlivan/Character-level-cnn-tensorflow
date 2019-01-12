@@ -67,30 +67,26 @@ The training/test loss/accuracy curves for each dataset's experiments (figures f
 
 - **ag_news**
 
-<img src="visualization/char-cnn_small_agnews.png" width="420"> <img src="visualization/char-cnn_large_agnews.png" width="420"> 
+<img src="visualization/ag_news_small.png" width="420"> <img src="visualization/ag_news_large.png" width="420"> 
 
 - **db_pedia**
 
-<img src="visualization/char-cnn_small_dbpedia.png" width="420"> <img src="visualization/char-cnn_large_dbpedia.png" width="420">
+<img src="visualization/dbpedia_small.png" width="420"> <img src="visualization/dbpedia_large.png" width="420">
 
 - **yelp_polarity**
 
-<img src="visualization/char-cnn_small_yelp_review_polarity.png" width="420"> <img src="visualization/char-cnn_large_yelp_review_polarity.png" width="420">
+<img src="visualization/yelp_review_polarity_small.png" width="420"> <img src="visualization/yelp_review_polarity_large.png" width="420">
 
 - **yelp_review**
 
-<img src="visualization/char-cnn_small_yelp_review.png" width="420"> <img src="visualization/char-cnn_large_yelp_review.png" width="420">
-
-- **yahoo! Answers**
-
-<img src="visualization/char-cnn_small_yahoo_answers.png" width="420"> <img src="visualization/char-cnn_large_yahoo_answers.png" width="420">
+<img src="visualization/yelp_review_full_small.png" width="420"> <img src="visualization/yelp_review_full_large.png" width="420">
 
 - **amazon_review**
 
-<img src="visualization/char-cnn_small_amazon_review.png" width="420"> <img src="visualization/char-cnn_large_amazon_review.png" width="420">
+<img src="visualization/amazon_review_full_small.png" width="420"> <img src="visualization/amazon_review_full_large.png" width="420">
 
 - **amazon_polarity**
 
-<img src="visualization/char-cnn_small_amazon_polarity.png" width="420"> <img src="visualization/char-cnn_large_amazon_polarity.png" width="420">
+<img src="visualization/amazon_review_polarity_small.png" width="420"> <img src="visualization/amazon_review_polarity_large.png" width="420">
 
-You could find detail log of each experiment containing loss, accuracy and confusion matrix at the end of each epoch in **output/datasetname_scale/logs.txt**, for example output/ag_news_small/logs.txt
+You could find detail log of each experiment containing loss, accuracy and confusion matrix at the end of each epoch in **trained_models/logs.txt**.
