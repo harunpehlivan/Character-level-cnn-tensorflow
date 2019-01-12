@@ -31,13 +31,13 @@ Additionally, in the original model, one epoch is seen as a loop over batch_size
 ## Training
 After putting 2 files **train.csv** and **test.csv** from any dataset mentioned above into **data** folder, there are several option for training:
 If you want to train a model with common dataset and default parameters, you could run:
-- **python train.py -d dataset_name**: For example, python train.py -d dbpedia
+- **python train.py**
 
-If you want to train a model with common dataset and your preference parameters, like optimizer and learning rate, you could run:
-- **python train.py -d dataset_name -p optimizer_name -l learning_rate**: For example, python train.py -d dbpedia -p sgd -l 0.01
+If you want to train a model with your preference parameters, like optimizer and learning rate, you could run:
+- **python train.py --optimizer optimizer_name --lr learning_rate**: For example, python train.py --optimizer adam --lr 0.001
 
-If you want to train a model with your own dataset, you need to specify the path to input and output folders:
-- **python train.py -i path/to/input/folder -o path/to/output/folder**
+If you want to train a model with your own dataset, you need to specify the paths to input (train and test files) and output folder:
+- **python train.py --train_set path/to/training/file --test_set path/to/test/file --saved_path path/to/output/folder**
 
 You could find all trained models I have trained in [link](https://drive.google.com/open?id=1zzC4r0nn8yInWjCbVrVZPFYyOWJQizqh)
 
