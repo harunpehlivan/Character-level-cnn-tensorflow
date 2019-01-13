@@ -30,6 +30,7 @@ Additionally, in the original model, one epoch is seen as a loop over batch_size
 
 ## Training
 After putting 2 files **train.csv** and **test.csv** from any dataset mentioned above into **data** folder, there are several option for training:
+
 If you want to train a model with common dataset and default parameters, you could run:
 - **python train.py**
 
