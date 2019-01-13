@@ -40,7 +40,7 @@ If you want to train a model with your preference parameters, like optimizer and
 If you want to train a model with your own dataset, you need to specify the paths to input (train and test files) and output folder:
 - **python train.py --train_set path/to/training/file --test_set path/to/test/file --saved_path path/to/output/folder**
 
-You could find all trained models I have trained in [link](https://drive.google.com/open?id=1zzC4r0nn8yInWjCbVrVZPFYyOWJQizqh)
+You could find all trained models I have trained in [link](https://drive.google.com/open?id=1Aj01eRpGONphFy1SPCMiSfuCqP5G1d5L)
 
 ## Experiments:
 
