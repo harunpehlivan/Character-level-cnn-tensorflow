@@ -54,14 +54,14 @@ Maximally, each experiment would be run for 20 epochs. Early stopping was applie
 
 |      Size     |     Small  |     Large    |
 |:---------------:|:--------------:|:--------------:|
-|    ag_news    | 86.71(84.35) | 88.13(87.18) |
-|   sogu_news   | 95.08(91.35) | 94.90(95.12) |
-|    db_pedia   | 97.53(98.02) | 97.60(98.27) |
-| yelp_polarity | 91.40(93.47) | 93.50(94.11) |
-|  yelp_review  | 56.09(59.16) | 58.93(60.38) |
-|  yahoo_answer | 65.91(70.16) | 64.93(70.45) |
-| amazon_review | 56.77(59.47) | 59.01(58.69) |
-|amazon_polarity| 92.54(94.50) | 93.85(94.49) |
+|    ag_news    | 86.74(84.35) | 88.00(87.18) |
+|   sogu_news   | 94.46(91.35) | 94.66(95.12) |
+|    db_pedia   | 97.71(98.02) | 97.29(98.27) |
+| yelp_polarity | 92.17(93.47) | 92.67(94.11) |
+|  yelp_review  | 58.97(59.16) | 59.61(60.38) |
+|  yahoo_answer |      (70.16) |      (70.45) |
+| amazon_review | 57.25(59.47) | 59.03(58.69) |
+|amazon_polarity| 93.54(94.50) | 94.85(94.49) |
 
 The training/test loss/accuracy curves for each dataset's experiments (figures for small model are on the left side) are shown below:
 
